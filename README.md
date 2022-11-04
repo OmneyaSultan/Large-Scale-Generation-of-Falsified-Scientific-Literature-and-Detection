@@ -18,8 +18,8 @@ Data
 - Updating TSV
 
 
-————————————————————————————————————
-##OVERVIEW
+--------------------------------
+## OVERVIEW
 
 In this project, we further explored the given 'Big et al Media' dataset in order to generate 500 fake scientific articles. The following tasks included: extracting text from the original articles in the dataset, using grover to generate fake text, using DCGAN to generate fake images, using tike-dockers to create fake captions, using LaTeX to combine the different parts into pdfs for the fake articles, and finally updating the original tsv file to include the 500 fake articles along with fake ancillary features.
 
@@ -27,9 +27,9 @@ In this project, we further explored the given 'Big et al Media' dataset in orde
 
 The following ReadMe file will explain what each program requires and how it runs. Due to the various programs that were used to complete this project, the ReadMe file is divided in a way that explains each program.
 
-————————————————————————————————————
+--------------------------------
 
-##LIBRARIES IMPORTED
+## LIBRARIES IMPORTED
 
 -csv 
 -json
@@ -42,9 +42,9 @@ The following ReadMe file will explain what each program requires and how it run
 -requests
 -Fitz
 -slugify
-————————————————————————————————————
+--------------------------------
 
-##Control_Script
+## Control_Script
 
 The control script will run Image Caption Generator and ……
 
@@ -55,8 +55,8 @@ Running Control_Script.py along with ‘—Generate_Captions’ as an argument w
 All output .tsv files will be found in TEAM_SEIZE_THE_DATA_DSCI550_HW_BIGDATA directory as they are generated.
 
 
-————————————————————————————————————
-##EXTRACTING ORIGINAL DATA
+--------------------------------
+## EXTRACTING ORIGINAL DATA
 
 The dataset has been split so each spreadsheet has 30 papers to avoid crashing web driver and reduce chance of getting blocked
 
@@ -66,8 +66,8 @@ Go through “BIK_Researchgate copy x.tsv” in sequence. For each tsv save a co
 
 Its important to use these datasets as is because I added a column called “serial” which I am using to name the papers as they are downloaded per their serial number in the dataset
 
-————------------------------------------------------------------------------------------
-###Installing Chrome Webdriver
+--------------------------------
+### Installing Chrome Webdriver
 
 `$ sudo apt-get install unzip`
 `$ wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip -P ~/Downloads`
@@ -97,18 +97,18 @@ At which point I got an error message that the developer is not trusted so I rem
 `xattr -d com.apple.quarantine /usr/local/bin/chromedriver`
 
 
-—————
+--------------------------------
 
-###Installing selenium: 
+### Installing selenium: 
 
 `Pip install selenium`
 
-——————
-###Installing Tika
+--------------------------------
+### Installing Tika
 
 `Pip install tika`
 
-————
+--------------------------------
 Then test Tika with any file
 
 Initializing Tika for the first time:
@@ -121,7 +121,7 @@ Initializing Tika for the first time:
 `print(parsed["content"])`
 
 IMPORTANT: get the path where its being installed!
-—————————
+--------------------------------
 Every time after that:
 
 `import os`
@@ -141,13 +141,13 @@ Set tika environment variables to path where tika was first installed to avoid d
 `parsed = parser.from_file('file.pdf')`
 `print(parsed["metadata"])`
 `print(parsed["content"])`
-—————————
-###Converting pdfs to JSONs
+--------------------------------
+### Converting pdfs to JSONs
 
 - The Jupyter Notebook submitted in this HW titled “Output Jsons from pdfs” was used for the conversion. A personal Google drive of one of the group members, where the pdfs had been uploaded in a folder named “pdf_folder” that was shared with the rest of the group, is first mounted when the notebook is run. 
 - The code grabs the pdfs in the “pdf_folder” on Google drive and uses Tika Python to convert each pdf into a JSON file, name it the same name as the pdf file, then save it in a folder on Google drive named “json_folder”, which was also shared with the whole group.
-————————————————————————————————————
-##GROVER
+--------------------------------
+## GROVER
 
 There are four python scripts and two Google Colab notebooks associated with the Grover steps in this project. 
 
@@ -159,8 +159,8 @@ Grover discrimination:
 -Discrimination.py: This file accesses all of the data from the Bik dataset in combination with the 500 generated articles, and merges them into a jsonl file in the format required by the Grover generator. The installed libraries are os, csv, and json.
 -Grover_discrimination.ipynb:  This file runs the Grover discriminator, using pre-trained models. It gives a numpy file as output, which gives the prediction whether each file is machine or human. The installed libraries come from Rowan Zellers’ GitHub repository, as well as numpy, tensorflow-gpu, and tensorboard. 
 -GetColumn.py: This file parses the numpy file produced by Grover_discrimination.ipynb, and writes the data to a csv file for later use. The installed libraries are csv and numpy.
-————————————————————————————————————
-##FAKE IMAGE GENERATOR  (DCGAN)
+--------------------------------
+## FAKE IMAGE GENERATOR  (DCGAN)
 
 Contains: step5_1_directory_image_extractor.py , step5_2_dcgan.ipynb
 
@@ -178,7 +178,7 @@ Description:
 This program extracts from .jpg images located in the PATH: dcgan_images/dcgan_input and outputs fake image results into PATH: dcgan_images/dcgan_output
 The program replaced any pooling layers from each .jpg file located in the dcgan_input folder with strided convolutions (discriminator) and fractional-strided convolutions(generator) using batch norm in both the generator and the discriminator.
 ***Note: This program can take between 3-4 hours from execution to completion.
-—----------------------------------
+--------------------------------
 File: step5_2_dcgan.ipynb
 Required libraries:
 import os
@@ -205,8 +205,8 @@ Step 4: Program converts all non-PNG file extensions to PNG and saves individual
 into the correct directory that correlates with the .pdf file (paper name) it was extracted from.
 
 
-————————————————————————————————————
-##IMAGE CAPTION GENERATOR
+--------------------------------
+## IMAGE CAPTION GENERATOR
 
 Installations that worked for my code to run:
 *Install Dockers 4.6.1: https://docs.docker.com/desktop/mac/install/
@@ -248,8 +248,8 @@ How the code works in GenerateCaptions.py:
 	*output: tsv file with the name, url and captions of the 500 fake images.
 
 
-————————————————————————————————————
-##LATEX
+--------------------------------
+## LATEX
 
 -For this step - Faker, pyLaTex must be installed via pip install. Also, a pdf compiler must be installed like Miktex which can be downloaded from miktex.org.
 -Prior to running Latex, the fake_name_gen.py script must be run to generate the input for creating the fake .pdfs. This script can be found in the ‘step7_8_9’ directory.
@@ -264,8 +264,8 @@ How the code works in GenerateCaptions.py:
 
 
 
-————————————————————————————————————
-##UPDATING TSV FILE
+--------------------------------
+## UPDATING TSV FILE
 
 -Once all steps have been completed, final_tsv_gen.py can be accessed to combine all data (new and old) into a single Final_Output_v2.tsv file which can be found in the ‘data’ directory within the ‘step7_8_9’ directory.
 -The .tsv file will include all features from the original dataset with an additional 500 records filled with fake information.
