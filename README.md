@@ -31,17 +31,17 @@ The following ReadMe file will explain what each program requires and how it run
 
 ## LIBRARIES IMPORTED
 
--csv 
--json
--numpy
--tensorflow-gpu
--tensorboard 
--random
--os
--glob
--requests
--Fitz
--slugify
+- csv 
+- json
+- numpy
+- tensorflow-gpu
+- tensorboard 
+- random
+- os
+- glob
+- requests
+- Fitz
+- slugify
 --------------------------------
 
 ## Control_Script
