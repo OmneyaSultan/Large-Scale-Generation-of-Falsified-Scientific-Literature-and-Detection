@@ -158,6 +158,7 @@ Set tika environment variables to path where tika was first installed to avoid d
 `print(parsed["metadata"])`
 
 `print(parsed["content"])`
+
 --------------------------------
 ### Converting pdfs to JSONs
 
