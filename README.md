@@ -191,9 +191,12 @@ from slugify import slugify
 import glob
 
 Description: 
+
 This program extracts from .jpg images located in the PATH: dcgan_images/dcgan_input and outputs fake image results into PATH: dcgan_images/dcgan_output
 The program replaced any pooling layers from each .jpg file located in the dcgan_input folder with strided convolutions (discriminator) and fractional-strided convolutions(generator) using batch norm in both the generator and the discriminator.
-***Note: This program can take between 3-4 hours from execution to completion.
+
+Note: This program can take between 3-4 hours from execution to completion.
+
 --------------------------------
 File: step5_2_dcgan.ipynb
 Required libraries:
