@@ -70,10 +70,14 @@ Its important to use these datasets as is because I added a column called “ser
 ### Installing Chrome Webdriver
 
 `$ sudo apt-get install unzip`
+
 `$ wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip -P ~/Downloads`
+
 `$ unzip ~/Downloads/chromedriver_linux64.zip -d ~/Downloads`
 
+
 moved chromedriver from downloads to usr/local/share
+
 `$ sudo mv -f ~/Downloads/chromedriver /usr/local/share/`
 
 `$ sudo chmod +x /usr/local/share/chromedriver`
