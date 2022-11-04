@@ -2,7 +2,7 @@ GROUP: Seize the
 Data
 ---------------------
 
-`code`
+
 
 
 ## TABLE OF CONTENTS
@@ -69,78 +69,78 @@ Its important to use these datasets as is because I added a column called “ser
 ————------------------------------------------------------------------------------------
 Installing Chrome Webdriver
 —-----------------------------------
-'$ sudo apt-get install unzip'
-'$ wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip -P ~/Downloads'
-'$ unzip ~/Downloads/chromedriver_linux64.zip -d ~/Downloads'
+`$ sudo apt-get install unzip`
+`$ wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip -P ~/Downloads`
+`$ unzip ~/Downloads/chromedriver_linux64.zip -d ~/Downloads`
 
 moved chromedriver from downloads to usr/local/share
-'$ sudo mv -f ~/Downloads/chromedriver /usr/local/share/'
+`$ sudo mv -f ~/Downloads/chromedriver /usr/local/share/`
 
-'$ sudo chmod +x /usr/local/share/chromedriver'
+`$ sudo chmod +x /usr/local/share/chromedriver`
 
 moved it again to usr/local/bin
-'$ sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver'
+`$ sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver`
 
 Note: when I first tried to do this (move from local share to local bin) I got operation not permitted, which I resolved by giving full disk access to terminal in privacy settings
 
-'$ sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver'
+`$ sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver`
 
 
 The path I actually wound up with is usr/local/bin/chromedriver
 
 To find chromedriver version:
 
-'Chromedriver —version'
+`Chromedriver —version`
 
 At which point I got an error message that the developer is not trusted so I removed quarantine using: 
 
-'xattr -d com.apple.quarantine /usr/local/bin/chromedriver'
+`xattr -d com.apple.quarantine /usr/local/bin/chromedriver`
 
 
 —————
 
 Installing selenium: 
 
-'Pip install selenium'
+`Pip install selenium`
 
 ——————
 Installing Tika
 
-'Pip install tika'
+`Pip install tika`
 
 ————
 Then test Tika with any file
 
 Initializing Tika for the first time:
 
-'import tika'
-'tika.initVM()'
-'from tika import parser'
-'parsed = parser.from_file('file.pdf')'
-'print(parsed["metadata"])'
-'print(parsed["content"])'
+`import tika`
+`tika.initVM()`
+`from tika import parser`
+`parsed = parser.from_file('file.pdf')`
+`print(parsed["metadata"])`
+`print(parsed["content"])`
 
 IMPORTANT: get the path where its being installed!
 —————————
 Every time after that:
 
-'import os'
+`import os`
 
 Set tika environment variables to path where tika was first installed to avoid downloading 60 MB of tika from the server every time you run your code
 
-'os.environ['TIKA_SERVER_JAR'] = "file:///var/folders/6f/jn6jftmx52n84g99clgmg60w0000gp/T/tika-server.jar"'
-'os.environ['TIKA_PATH'] = "<file:///var/folders/6f/jn6jftmx52n84g99clgmg60w0000gp/T/"'
+`os.environ['TIKA_SERVER_JAR'] = "file:///var/folders/6f/jn6jftmx52n84g99clgmg60w0000gp/T/tika-server.jar"`
+`os.environ['TIKA_PATH'] = "<file:///var/folders/6f/jn6jftmx52n84g99clgmg60w0000gp/T/"`
 
 
 
-'#!/usr/bin/env python'
+`#!/usr/bin/env python`
 
-'import tika'
-'tika.initVM()'
-'from tika import parser'
-'parsed = parser.from_file('file.pdf')'
-'print(parsed["metadata"])'
-'print(parsed["content"])'
+`import tika`
+`tika.initVM()`
+`from tika import parser`
+`parsed = parser.from_file('file.pdf')`
+`print(parsed["metadata"])`
+`print(parsed["content"])`
 —————————
 Converting pdfs to JSONs
 
