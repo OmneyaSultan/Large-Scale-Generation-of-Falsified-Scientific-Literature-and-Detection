@@ -1,1 +1,3 @@
  *.ipynb linguist-language=Python
+ *.tex linguist-language=Python
+ *.aux linguist-language=Python
