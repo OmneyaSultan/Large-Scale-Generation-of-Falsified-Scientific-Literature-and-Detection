@@ -280,4 +280,3 @@ UPDATING TSV FILE
 
 
 
-![image](https://user-images.githubusercontent.com/113146260/199871455-d63370f4-bb47-4dc3-9e0e-03c1b667460c.png)
