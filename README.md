@@ -97,6 +97,7 @@ At which point I got an error message that the developer is not trusted so I rem
 `xattr -d com.apple.quarantine /usr/local/bin/chromedriver`
 
 
+
 --------------------------------
 
 ### Installing selenium: 
@@ -124,6 +125,7 @@ Initializing Tika for the first time:
 `print(parsed["metadata"])`
 
 `print(parsed["content"])`
+
 
 IMPORTANT: get the path where its being installed!
 --------------------------------
