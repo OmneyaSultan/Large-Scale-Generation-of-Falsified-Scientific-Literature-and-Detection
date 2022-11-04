@@ -131,6 +131,7 @@ Initializing Tika for the first time:
 `print(parsed["content"])`
 
 
+
 IMPORTANT: get the path where its being installed!
 --------------------------------
 Every time after that:
