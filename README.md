@@ -114,10 +114,15 @@ Then test Tika with any file
 Initializing Tika for the first time:
 
 `import tika`
+
 `tika.initVM()`
+
 `from tika import parser`
+
 `parsed = parser.from_file('file.pdf')`
+
 `print(parsed["metadata"])`
+
 `print(parsed["content"])`
 
 IMPORTANT: get the path where its being installed!
@@ -136,10 +141,15 @@ Set tika environment variables to path where tika was first installed to avoid d
 `#!/usr/bin/env python`
 
 `import tika`
+
 `tika.initVM()`
+
 `from tika import parser`
+
 `parsed = parser.from_file('file.pdf')`
+
 `print(parsed["metadata"])`
+
 `print(parsed["content"])`
 --------------------------------
 ### Converting pdfs to JSONs
@@ -152,13 +162,13 @@ Set tika environment variables to path where tika was first installed to avoid d
 There are four python scripts and two Google Colab notebooks associated with the Grover steps in this project. 
 
 Grover generation:
--CreateJsonl.py: This file accesses the Bik dataset and puts the data into json objects in the format required by the Grover generator. A jsonl file is created, which is used to run Grover_generation.ipynb. The installed libraries are csv and json.
--Grover_generation.ipynb: This file runs the Grover generator. The installed libraries come from Rowan Zellers’ GitHub repository, as well as numpy, tensorflow-gpu, and tensorboard. The Grover generator is run in a loop 3 times, to generate 642 fake articles.
--GenFakeTitle.py: This file accesses the Grover generator’s output and uses that information to create a jsonl file with the new articles. A fake title is generated for each article by randomly sampling the existing Bik dataset. The installed libraries are random, csv, and json.
+- CreateJsonl.py: This file accesses the Bik dataset and puts the data into json objects in the format required by the Grover generator. A jsonl file is created, which is used to run Grover_generation.ipynb. The installed libraries are csv and json.
+- Grover_generation.ipynb: This file runs the Grover generator. The installed libraries come from Rowan Zellers’ GitHub repository, as well as numpy, tensorflow-gpu, and tensorboard. The Grover generator is run in a loop 3 times, to generate 642 fake articles.
+- GenFakeTitle.py: This file accesses the Grover generator’s output and uses that information to create a jsonl file with the new articles. A fake title is generated for each article by randomly sampling the existing Bik dataset. The installed libraries are random, csv, and json.
 Grover discrimination:
--Discrimination.py: This file accesses all of the data from the Bik dataset in combination with the 500 generated articles, and merges them into a jsonl file in the format required by the Grover generator. The installed libraries are os, csv, and json.
--Grover_discrimination.ipynb:  This file runs the Grover discriminator, using pre-trained models. It gives a numpy file as output, which gives the prediction whether each file is machine or human. The installed libraries come from Rowan Zellers’ GitHub repository, as well as numpy, tensorflow-gpu, and tensorboard. 
--GetColumn.py: This file parses the numpy file produced by Grover_discrimination.ipynb, and writes the data to a csv file for later use. The installed libraries are csv and numpy.
+- Discrimination.py: This file accesses all of the data from the Bik dataset in combination with the 500 generated articles, and merges them into a jsonl file in the format required by the Grover generator. The installed libraries are os, csv, and json.
+- Grover_discrimination.ipynb:  This file runs the Grover discriminator, using pre-trained models. It gives a numpy file as output, which gives the prediction whether each file is machine or human. The installed libraries come from Rowan Zellers’ GitHub repository, as well as numpy, tensorflow-gpu, and tensorboard. 
+- GetColumn.py: This file parses the numpy file produced by Grover_discrimination.ipynb, and writes the data to a csv file for later use. The installed libraries are csv and numpy.
 --------------------------------
 ## FAKE IMAGE GENERATOR  (DCGAN)
 
@@ -209,13 +219,13 @@ into the correct directory that correlates with the .pdf file (paper name) it wa
 ## IMAGE CAPTION GENERATOR
 
 Installations that worked for my code to run:
-*Install Dockers 4.6.1: https://docs.docker.com/desktop/mac/install/
-*Download Tensorflow: https://www.tensorflow.org/install
-*Download tika-dockers: https://github.com/USCDataScience/tika-dockers
-	**Edited tiki-docker code based on this GitHub suggestion: https://github.com/USCDataScience/tika-dockers/pull/2/files
-*Download img2text: https://github.com/USCDataScience/img2text
-*Download Tika 2.3.0: https://tika.apache.org/download.html
-*Download Apache-maven 3.8.5: https://maven.apache.org/download.cgi
+- Install Dockers 4.6.1: https://docs.docker.com/desktop/mac/install/
+- Download Tensorflow: https://www.tensorflow.org/install
+- Download tika-dockers: https://github.com/USCDataScience/tika-dockers
+	Edited tiki-docker code based on this GitHub suggestion: https://github.com/USCDataScience/tika-dockers/pull/2/files
+- Download img2text: https://github.com/USCDataScience/img2text
+- Download Tika 2.3.0: https://tika.apache.org/download.html
+- Download Apache-maven 3.8.5: https://maven.apache.org/download.cgi
 
 import glob
 import csv
@@ -251,25 +261,25 @@ How the code works in GenerateCaptions.py:
 --------------------------------
 ## LATEX
 
--For this step - Faker, pyLaTex must be installed via pip install. Also, a pdf compiler must be installed like Miktex which can be downloaded from miktex.org.
--Prior to running Latex, the fake_name_gen.py script must be run to generate the input for creating the fake .pdfs. This script can be found in the ‘step7_8_9’ directory.
--The fake_name_gen.py creates a .csv file containing the title of a work, an author name which is randomly generated when the script is ran, text that was generated from Grover step, publish dates and affiliation which were randomly sampled from the original dataset, filename of the image which was provided after the imaging step as well as captions.
--Output for fake_name_gen.py is named ‘fake_paper_info.csv’ and can be found in ‘data’ directory within ‘steps7_8_9’ directory.
--fake_paper_gen.py can then be ran once the output has been created. However since the output from the previous script has been provided, users can choose to run this step with the given .csv as input.
+- For this step - Faker, pyLaTex must be installed via pip install. Also, a pdf compiler must be installed like Miktex which can be downloaded from miktex.org.
+- Prior to running Latex, the fake_name_gen.py script must be run to generate the input for creating the fake .pdfs. This script can be found in the ‘step7_8_9’ directory.
+- The fake_name_gen.py creates a .csv file containing the title of a work, an author name which is randomly generated when the script is ran, text that was generated from Grover step, publish dates and affiliation which were randomly sampled from the original dataset, filename of the image which was provided after the imaging step as well as captions.
+- Output for fake_name_gen.py is named ‘fake_paper_info.csv’ and can be found in ‘data’ directory within ‘steps7_8_9’ directory.
+- fake_paper_gen.py can then be ran once the output has been created. However since the output from the previous script has been provided, users can choose to run this step with the given .csv as input.
 
-**NOTE: As the above script generates 500 .pdf files, this script can take approximately 20 minutes to run depending on system configuration.
+*NOTE: As the above script generates 500 .pdf files, this script can take approximately 20 minutes to run depending on system configuration.
 
--The script accesses image files contained in the ‘500_fake_images’ directory within the ‘falsified_media’ directory and generates pdfs using data from the ‘fake_paper_info.csv’ file in the ‘data directory’.
--.pdf and .tex files are output into the ‘falsified_media’ directory. .log and .aux files are created with metadata.
+- The script accesses image files contained in the ‘500_fake_images’ directory within the ‘falsified_media’ directory and generates pdfs using data from the ‘fake_paper_info.csv’ file in the ‘data directory’.
+- .pdf and .tex files are output into the ‘falsified_media’ directory. .log and .aux files are created with metadata.
 
 
 
 --------------------------------
 ## UPDATING TSV FILE
 
--Once all steps have been completed, final_tsv_gen.py can be accessed to combine all data (new and old) into a single Final_Output_v2.tsv file which can be found in the ‘data’ directory within the ‘step7_8_9’ directory.
--The .tsv file will include all features from the original dataset with an additional 500 records filled with fake information.
--An additional column will be added to show the Grover scores for each record. These scores indicate whether Grover was able to detect if the document was fake.
+- Once all steps have been completed, final_tsv_gen.py can be accessed to combine all data (new and old) into a single Final_Output_v2.tsv file which can be found in the ‘data’ directory within the ‘step7_8_9’ directory.
+- The .tsv file will include all features from the original dataset with an additional 500 records filled with fake information.
+- An additional column will be added to show the Grover scores for each record. These scores indicate whether Grover was able to detect if the document was fake.
 
 
 
